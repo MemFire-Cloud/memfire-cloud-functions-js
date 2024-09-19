@@ -1,6 +1,6 @@
 {
     "name": "memfire-cloud-functions-js",
-    "version": "0.0.2",
+    "version": "0.0.4",
     "description": "JS Client library to interact with Supabase Functions.",
     "main": "dist/main/index.js",
     "module": "dist/module/index.js",

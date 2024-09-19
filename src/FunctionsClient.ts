@@ -9,23 +9,17 @@ import {
 } from './types'
 
 export class FunctionsClient {
-  protected url: string
   protected headers: Record<string, string>
   protected fetch: Fetch
 
-  constructor(
-    url: string,
-    {
-      headers = {},
-      customFetch,
-    }: {
-      headers?: Record<string, string>
-      customFetch?: Fetch
-    } = {}
-  ) {
-    this.url = url
-    this.headers = headers
-    this.fetch = resolveFetch(customFetch)
+  constructor(supabase: {
+    headers: Record<string, string>
+    fetch:
+      | ((input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>)
+      | undefined
+  }) {
+    this.headers = supabase.headers
+    this.fetch = resolveFetch(supabase.fetch)
   }
 
   /**
